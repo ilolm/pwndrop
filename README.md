@@ -30,19 +30,25 @@ Its main goal is to make file sharing as easy and intuitive as possible, while i
 
 Frontend of **pwndrop** is developed in pure Vue.js + Bootstrap with no npm or webpack dependencies. The backend serves REST API and manages a local database, powered by GO language.
 
-## Write-up
+---
+
+# Write-up
 
 If you want to learn how to use **pwndrop** or you want to learn what new features were implemented in recent releases, make sure to check out the posts on my blog:
 
 https://breakdev.org/pwndrop
 
-## Video guide
+---
+
+# Video guide
 
 Take a look at the fantastic video made by Luke Turvey ([@TurvSec](https://twitter.com/TurvSec)), which fully explains how to get started using **pwndrop**.
 
 [![File and Phishing Payload Hosting using PwnDrop (Red Team) - Luke Turvey](https://img.youtube.com/vi/e3veSyIFvOE/0.jpg)](https://www.youtube.com/watch?v=e3veSyIFvOE)
 
-## Prerequisites
+---
+
+# Prerequisites
 
 If you don't yet have the server to deploy to I highly recommend Digital Ocean. The cheapest $5/mo Debian 9 server with 25GB of storage space will work wonders for you. You can use my referral link to [get an extra $100 to spend on your servers in 60 days for free](https://m.do.co/c/50338abc7ffe).
 
@@ -53,11 +59,30 @@ Register a new domain and point its DNS A records to your VPS IP. You can also r
 
 If you want to set up **pwndrop** without a domain, check below how to set up a local instance, which will not auto-generate HTTPS certificates.
 
-## Installation
+---
+
+# Installation
 
 Make sure there aren't any DNS or HTTP(S) servers running before you attempt to install **pwndrop**.
 
-#### Oneliner
+## Docker
+
+**Deploy:**
+```bash
+sudo docker container run -itd --name pwndrop -p 80:80 -p 443:443 pwndrop:latest
+```
+**Start:**
+```bash
+sudo docker container start pwndrop
+```
+**Stop:**
+```bash
+sudo docker container stop pwndrop
+```
+
+<br></br>
+
+## Install script
 
 I do not recommend running oneliners, before downloading and checking the script code, but if you are really in a hurry, here it is:
 ```
@@ -66,7 +91,9 @@ curl https://raw.githubusercontent.com/kgretzky/pwndrop/master/install_linux.sh 
 
 This will download the latest amd64 release binary and fully install a daemon running in a background.
 
-#### From binary
+<br></br>
+
+## From binary
 
 First you need to download the release package you want from: https://github.com/kgretzky/pwndrop/releases
 
@@ -80,7 +107,9 @@ tar zxvf pwndrop-linux-amd64.tar.gz
 ./pwndrop status
 ```
 
-#### From source code
+<br></br>
+
+## From source code
 
 First of all, make sure you have installed GO with version at least **1.13**: https://golang.org/doc/install
 
@@ -94,7 +123,9 @@ make
 make install
 ```
 
-## Quickstart
+---
+
+# Quickstart
 
 Make sure the **pwndrop** is running.
 
@@ -104,6 +135,8 @@ Make sure the **pwndrop** is running.
 4. Click the configuration cog in top-left corner and make sure you change the secret path to something other than `/pwndrop`.
 
 You're good to go!
+
+---
 
 ## Running from CLI
 
@@ -127,7 +160,9 @@ parameters:
     -h              : usage help
 ```
 
-## Configuration
+---
+
+# Configuration
 
 On first launch, **pwndrop**, by default, will create a new configuration file `pwndrop.ini` in the same directory as an executable. You can later modify it or supply your own, for example to pre-configure **pwndrop** before the installation to automate the deployment of a tool even better.
 
@@ -149,12 +184,16 @@ secret_path = "/pwndrop"                    # secret URL path, which upon visiti
 
 If you want to pre-configure your **pwndrop** instance before deployment using any of the installation scripts, put your configuration file at `/usr/local/pwndrop/pwndrop.ini` and it will be parsed the moment **pwndrop** daemon is first executed.
 
-## Credits
+---
+
+# Credits
 
 Huge thanks to [**@jaredhaight**](https://twitter.com/jaredhaight) for inspiring me to learn Vue, with his [Faction C2](https://www.factionc2.com/) framework!
 
 Also much thanks to all the people who gave me pre-release feedback and supported me with their opinions on the tool!
 
-## License
+---
+
+# License
 
 **pwndrop** is made by Kuba Gretzky ([@mrgretzky](https://twitter.com/mrgretzky)) and it's released under GPL3 license.
